@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #000000;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+            gap: 20px;
+        }
+        .card  {
+            background-color: #1a1a1a;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+       .card h2 {
+           margin: 0 0 15px; /* existing margin */
+           font-weight: bold; /* or you can use a number like 700 */
+           color: #ececec; /* replace #333 with your desired color */
+       }
+       
+       h2 {
+        margin: 0 0 15px; /* existing margin */
+        font-weight: bold; /* or you can use a number like 700 */
+        color: #ececec; /* replace #333 with your desired color */
+    }
+        
+       
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; 
+            text-align: center;
+            border-radius: 8px;
+        }
+        .modal input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .glow-on-hover {
+            width: 220px;
+            height: 50px;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            margin: 10px; /* Added margin for spacing between buttons */
+        }
+
+        .glow-on-hover:before {
+            content: '';
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            bottom: -5px;
+            right: -10px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing 20s linear infinite;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .glow-on-hover:active {
+            color: #ffffff;
+        }
+
+        .glow-on-hover:active::before {
+            background: transparent;
+        }
+
+        .glow-on-hover:hover:before {
+            opacity: 1;
+        }
+
+        .glow-on-hover:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            position: relative;
+            background: #1e1e24;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .btn-flip {
+            opacity: 1;
+            outline: 0;
+            color: #fff;
+            line-height: 40px;
+            position: relative;
+            text-align: center;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-decoration: none;
+            font-family: "Open Sans";
+            text-transform: uppercase;
+          }
+          .btn-flip:hover:after {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+          }
+          .btn-flip:hover:before {
+            opacity: 0;
+            transform: translateY(50%) rotateX(90deg);
+          }
+          .btn-flip:after {
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 100%;
+            color: #323237;
+            display: block;
+            transition: 0.5s;
+            position: absolute;
+            background: #adadaf;
+            content: attr(data-back);
+            transform: translateY(-50%) rotateX(90deg);
+          }
+          .btn-flip:before {
+            top: 0;
+            left: 0;
+            opacity: 1;
+            color: #adadaf;
+            display: block;
+            padding: 0 30px;
+            line-height: 40px;
+            transition: 0.5s;
+            position: relative;
+            background: #000000;
+            content: attr(data-front);
+            transform: translateY(0) rotateX(0);
+          }
+
+
+          #pinModal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+            z-index: 1000; /* Ensure it's above other content */
+        }
+        
+        .modal-content {
+            background-color: black; /* Black background for the modal content */
+            color: white; /* White text color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center; /* Center text */
+        }
+        
+        input[type="password"] {
+            width: 80%; /* Set input width */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>Account Details</h2>
+       
+        <button class="glow-on-hover" onclick="openPinModal()" type="button">TRANSACTION</button>
+    </div>
+    <div class="card">
+        <h2>Credit</h2>
+
+        <button class="glow-on-hover" onclick="creditAmount()" type="button">Credit</button>
+    </div>
+    <div class="card">
+        <h2>Debit</h2>
+
+        <button class="glow-on-hover" onclick="debitAmount()" type="button">Debit</button>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="pinModal" class="modal">
+    <div class="modal-content">
+        <h2>Enter PIN</h2>
+        <input type="password" id="pinInput" placeholder="Enter your PIN">
+       
+        <button class="btn-flip" onclick="checkPin()" data-back="pin=1234" data-front="submit"></button>
+
+    
+      
+        <button class="glow-on-hover" onclick="closePinModal()" type="button">CANCEL</button>
+ 
+       
+    </div>
+
+</div>
+
+<script>
+    function openPinModal() {
+        document.getElementById('pinModal').style.display = 'block';
+    }
+
+    function closePinModal() {
+        document.getElementById('pinModal').style.display = 'none';
+    }
+
+    function checkPin() {
+        const pin = document.getElementById('pinInput').value;
+        closePinModal(); // Close modal after checking the pin
+        if (pin === '1234') {
+            window.location.href = 'account-info.html';
+        } else {
+            alert('Incorrect PIN.');
+        }
+    }
+
+    function creditAmount() {
+        const amount = prompt('Enter the amount to credit:');
+        const parsedAmount = parseFloat(amount);
+
+        if (isNaN(parsedAmount) || parsedAmount <= 0) {
+            alert('Please enter a valid amount.');
+        } else {
+            alert('Amount credited: ₹' + parsedAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+        }
+    }
+
+    function debitAmount() {
+        const amount = prompt('Enter the amount to debit:');
+        const parsedAmount = parseFloat(amount);
+
+        if (isNaN(parsedAmount) || parsedAmount <= 0) {
+            alert('Please enter a valid amount.');
+        } else {
+            alert('Amount debited: ₹' + parsedAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
